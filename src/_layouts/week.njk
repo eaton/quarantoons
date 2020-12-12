@@ -8,17 +8,18 @@ layout: base
 {% if clips %}
 	{% set videos = clips | clipData %}
 	{% if videos.customYtList %}
-	  {{ embed.youtubeMulti(videos.customYtList) }}
+	  {{ embed.youtubeMulti(videos.customYtList) | safe }}
 	{% else %}
 	  {% for clip in videos.clips %}
 			{% if clip.service == 'youtube' %}
 				{% if clip.playlist %}
-				  {{ embed.youtubePlaylist(clip.playlist) }}
+				  {{ embed.youtubePlaylist(clip.playlist) | safe }}
 				{% else %}
-				  {{ embed.youtube(clip.video) }}
+				  {{ embed.youtube(clip.video) | safe }}
+				  <p><a href="{{clip.raw}}">Hmmmm</a>. This might not work.</p>
 				{% endif %}
 			{% elseif clip.service == 'vimeo' %}
-			  {{ embed.vimeo(clip.video) }}
+			  {{ embed.vimeo(clip.video) | safe }}
 			{% endif %}
 	  {% endfor %}
 	{% endif %}

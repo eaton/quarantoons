@@ -1,10 +1,9 @@
-{# https://blog.production-now.com/2012/08/add-multiple-videos-to-youtube-embed.html #}
-
 {% macro youtube(id) %}
 <iframe
   width="640" height="360"
-  src="//www.youtube.com/embed/{{ id }}&rel=0&modestbranding=1"
+  src="//www.youtube.com/embed/{{ id }}?rel=0&modestbranding=1"
   frameborder="0"
+  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
   allowfullscreen>
 </iframe>
 {% endmacro %}
@@ -14,6 +13,7 @@
   width="640" height="360"
   src="//www.youtube.com/embed/{{ ids | first }}?playlist={% set comma = joiner(',')%}{% for i in range(1, ids | length) -%}{{ comma() }}{{ ids[i] }}{%- endfor %}&rel=0&modestbranding=1"
   frameborder="0"
+  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
   allowfullscreen>
 </iframe>
 {% endmacro %}
@@ -23,6 +23,7 @@
   width="640" height="360"
   src="//www.youtube.com/embed?listType=playlist&list={{ id }}&rel=0&modestbranding=1"
   frameborder="0"
+  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
   allowfullscreen>
 </iframe>
 {% endmacro %}
@@ -31,7 +32,7 @@
 <iframe src="//player.vimeo.com/video/{{ id }}?title=0&byline=0&portrait=0"
   width="640" height="360"
   frameborder="0"
-  allow="autoplay; fullscreen"
+  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
   allowfullscreen>
 </iframe>
 {% endmacro %}

@@ -54,11 +54,9 @@ module.exports = {
         if (list = parsedUrl.searchParams.get('list')) {
           data.playlist = list;
         }
-        if (video = parsedUrl.searchParams.get('v')) {
-          data.video = video;
+        if (id = parsedUrl.searchParams.get('v')) {
+          data.video = id;
           data.thumb = "//i3.ytimg.com/vi/" + video + "/hqdefault.jpg"
-        }
-        if (video = parsedUrl.searchParams.get('list')) {
         }
       } else if (parsedUrl.hostname.search('vimeo.com') > -1) {
         data.service = 'vimeo'
