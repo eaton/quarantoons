@@ -3,7 +3,7 @@
 {% macro youtube(id) %}
 <iframe
   width="640" height="360"
-  src="//www.youtube.com/embed/{{ id }}
+  src="//www.youtube.com/embed/{{ id }}&rel=0&modestbranding=1"
   frameborder="0"
   allowfullscreen>
 </iframe>
@@ -21,11 +21,12 @@
 {% macro youtubePlaylist(id) %}
 <iframe
   width="640" height="360"
-  src="//www.youtube.com/embed?listType=playlist&list={{ id }}&rel=0"
+  src="//www.youtube.com/embed?listType=playlist&list={{ id }}&rel=0&modestbranding=1"
   frameborder="0"
   allowfullscreen>
 </iframe>
 {% endmacro %}
+
 {% macro vimeo(id) %}
 <iframe src="//player.vimeo.com/video/{{ id }}?title=0&byline=0&portrait=0"
   width="640" height="360"
