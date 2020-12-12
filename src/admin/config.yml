@@ -44,8 +44,8 @@ collections:
     create: true
     sortable_fields: ["title", "date", "curator"]
     fields:
-      - { label: "Title", name: "title", widget: "string", required: true, pattern: ['.{0,60}', "60 characters max"], hint: "60 character limit; used in meta tags." }
-      - { label: "Week", name: "week", widget: "number", value_type: "int", required: false }
+      - { label: "Title", name: "title", widget: "string", required: false, pattern: ['.{0,60}', "60 characters max"], hint: "60 character limit; used in meta tags." }
+      - { label: "Week", name: "week", widget: "number", value_type: "int", required: true }
       - { label: "Date", name: "date", widget: "date", format: "YYYY-MM-DD", required: false }
       - name: "clips"
         label: "Clips"
