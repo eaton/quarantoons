@@ -1,0 +1,11 @@
+{
+  "title": "Quarantoons",
+  "description": "A little old place where we can get together.",
+  "url": "https://quarantoon.club",
+  "feedUrl": "/feed.xml",
+  "lang": "en",
+  "social": {
+    "twitter": "http://twitter.com/autogram_is",
+    "github": "https://github.com/autogram-is/quarantoons"
+  }
+}

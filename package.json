@@ -1,0 +1,43 @@
+{
+  "name": "quarantoons",
+  "version": "1.0.0",
+  "description": "A little old place where we can get together",
+  "scripts": {
+    "start": "npm run dev-cms",
+    "dev-cms": "run-p cms dev",
+    "dev": "run-s clean eleventy:dev --print-label",
+    "cms": "netlify-cms-proxy-server",
+    "build": "run-s clean eleventy:prod --print-label",
+    "eleventy:dev": "cross-env ELEVENTY_ENV=development eleventy --serve",
+    "eleventy:prod": "cross-env ELEVENTY_ENV=production eleventy",
+    "clean": "del-cli dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eaton/quarantoons.git"
+  },
+  "keywords": [
+    "cartoons"
+  ],
+  "author": "Jeff Eaton",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eaton/quarantoons/issues"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^0.11.0",
+    "@11ty/eleventy-cache-assets": "^2.0.3",
+    "@11ty/eleventy-plugin-rss": "^1.0.9",
+    "del-cli": "^3.0.1",
+    "luxon": "^1.24.1",
+    "markdown-it": "^11.0.0",
+    "npm-run-all": "^4.1.5",
+    "video-thumbnail-url": "^1.0.1"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "netlify-cms-proxy-server": "^1.3.6",
+    "npx": "^10.2.2"
+  }
+}

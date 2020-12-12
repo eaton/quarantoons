@@ -1,0 +1,119 @@
+backend:
+  name: github
+  branch: staging
+  repo: autogram-is/quarantoons
+  open_authoring: true
+  squash_merges: true
+
+site_url: "/"
+
+media_folder: 'src/uploads/' # Media files will be stored in the repo under src/uploads
+public_folder: '/uploads' # The src attribute for uploaded media will begin with /uploads
+
+# Please run "npx netlify-cms-proxy-server" for local backend
+local_backend: true
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    label_singular: "Page"
+    description: "Static pages for the site's navigation structure."
+    summary: "{{permalink}} — {{title}}"
+    format: "frontmatter"
+    folder: "src/pages"
+    create: true
+    sortable_fields: ["permalink", "title", "commit_date"]
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - { label: "Subtitle", name: "subtitle", widget: "string", required: false, pattern: ['.{0,160}', "160 characters max"], hint: "Optional 160-char text used in listings and meta tags." }
+      - { label: "Permalink", name: "permalink", widget: "string", required: true }
+      - { label: "Hide from lists", name: "eleventyExcludeFromCollections", widget: "boolean", default: false, required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "posts"
+    label: "Posts"
+    label_singular: "Post"
+    description: "News and notices for the gang."
+    summary: "{{title}} — {{published}}"
+    format: "frontmatter"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    folder: "src/posts"
+    create: true
+    sortable_fields: ["title", "date", "author"]
+    view_groups:
+      - label: "Posted"
+        field: "date"
+        pattern: \d{4}
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: true, pattern: ['.{0,60}', "60 characters max"], hint: "60 character limit; used in meta tags."  }
+      - { label: "Subtitle", name: "subtitle", widget: "string", required: false, pattern: ['.{0,160}', "160 characters max"], hint: "Optional 160-char text used in listings and meta tags." }
+      - { label: "Date published", name: "date", widget: "date", format: "YYYY-MM-DD", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+
+  - name: "parties"
+    label: "Parties"
+    label_singular: "Party"
+    description: "An individual playlist or collection of videos."
+    summary: "{{date}} — {{curator}} — {{title}}"
+    format: "frontmatter"
+    slug: "{{week}}"
+    folder: "src/parties"
+    create: true
+    sortable_fields: ["title", "date", "curator"]
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: true, pattern: ['.{0,60}', "60 characters max"], hint: "60 character limit; used in meta tags." }
+      - { label: "Week", name: "week", widget: "number", value_type: "int", required: false }
+      - { label: "Date", name: "date", widget: "date", format: "YYYY-MM-DD", required: false }
+      - name: "clips"
+        label: "Clips"
+        widget: "list"
+        minimize_collapsed: true
+        required: false
+        hint: "YouTube playlists, YouTube videos, and Vimeo videos are supported."
+        fields:
+          - { label: "Clip Title", name: "title", widget: "string", required: false }
+          - { label: "Clip Link", name: "link", widget: "string" }
+      - { label: "Thumbnail", name: "thumbnail", widget: "image", required: false, hint: "Optional thumbnail to use in the absence of a video." }
+      - { label: "Curator", name: "curator", widget: "string", required: false }
+      - { label: "Artist's Statement", name: "body", widget: "markdown", required: false }
+
+  - name: "settings"
+    label: "Site Settings"
+    delete: false
+    files:
+
+      - name: "meta"
+        label: "Site meta"
+        description: "Meta tags, social links, and other settings used when building the site."
+        file: "src/_data/meta.json"
+        fields:
+        - { label: "Site title", name: "title", widget: "string", required: true, pattern: ['.{0,60}', "60 characters max"], hint: "60 character limit; used in site meta tags."  }
+        - { label: "Description", name: "description", widget: "string", required: false, pattern: ['.{0,160}', "160 characters max"], hint: "Optional 160-char text used in site meta tags." }
+        - { label: "Site URL", name: "url", widget: "string", required: true, hint: "Live URL for the site." }
+        - { label: "Language", name: "language", widget: "string", default: "en", required: true, hint: "Two-letter language code for the site's default language." }
+        - name: "social"
+          label: "Social media accounts"
+          widget: "object"
+          required: false
+          fields:
+            - { label: "Behance", name: "behance", widget: "string", required: false }
+            - { label: "Dribbble", name: "dribbble", widget: "string", required: false }
+            - { label: "Facebook", name: "facebook", widget: "string", required: false }
+            - { label: "Flickr", name: "flickr", widget: "string", required: false }
+            - { label: "GitHub", name: "github", widget: "string", required: false }
+            - { label: "Goodreads", name: "goodreads", widget: "string", required: false }
+            - { label: "Hacker News", name: "hackernews", widget: "string", required: false }
+            - { label: "Instagram", name: "instagram", widget: "string", required: false }
+            - { label: "Kickstarter", name: "kickstarter", widget: "string", required: false }
+            - { label: "Last.fm", name: "lastfm", widget: "string", required: false }
+            - { label: "LinkedIn", name: "linkedin", widget: "string", required: false }
+            - { label: "Pinterest", name: "pinterest", widget: "string", required: false }
+            - { label: "Reddit", name: "reddit", widget: "string", required: false }
+            - { label: "Snapchat", name: "snapchat", widget: "string", required: false }
+            - { label: "Steam", name: "steam", widget: "string", required: false }
+            - { label: "Tumblr", name: "tumblr", widget: "string", required: false }
+            - { label: "Twitter", name: "twitter", widget: "string", required: false }
+            - { label: "Vimeo", name: "vimeo", widget: "string", required: false }
+            - { label: "YouTube", name: "youtube", widget: "string", required: false }
+
