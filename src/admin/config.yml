@@ -2,12 +2,10 @@ backend:
   name: github
   branch: staging
   repo: autogram-is/quarantoons
-  open_authoring: true
   squash_merges: true
 
-publish_mode: editorial_workflowsite_url: "/"
+site_url: "/"
 
-publish_mode: editorial_workflow
 media_folder: 'src/uploads/' # Media files will be stored in the repo under src/uploads
 public_folder: '/uploads' # The src attribute for uploaded media will begin with /uploads
 
