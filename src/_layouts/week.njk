@@ -24,6 +24,11 @@ layout: base
 	{% endif %}
 {% endif %}
 
+{% if content %}
+<section>
+	{{ content | safe }}
+</section>
+{% endif %}
 <p>
 <a href="/">Go back home</a>
 </p>
