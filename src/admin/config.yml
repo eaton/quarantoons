@@ -50,14 +50,14 @@ collections:
       - { label: "Body", name: "body", widget: "markdown" }
 
 
-  - name: "parties"
-    label: "Parties"
-    label_singular: "Party"
+  - name: "weeks"
+    label: "Weeks"
+    label_singular: "Week"
     description: "An individual playlist or collection of videos."
     summary: "{{date}} — {{curator}} — {{title}}"
     format: "frontmatter"
     slug: "{{week}}"
-    folder: "src/parties"
+    folder: "src/weeks"
     create: true
     sortable_fields: ["title", "date", "curator"]
     fields:
