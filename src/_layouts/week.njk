@@ -1,0 +1,26 @@
+---
+layout: base
+---
+{%- import "embed.njk" as embed -%}
+
+<h2>Aired on March {{ date | ofMarch | ordinal }}{% if curator %}, curated by {{ curator }}{% endif %}</h2>
+
+{% if clips %}
+	{% set videos = clips | clipData %}
+	{% if videos.customYtList %}
+	  {{ embed.youtubeMulti(videos.customYtList) }}
+	{% else %}
+	  {% for clip in videos.clips %}
+			{% if clip.service == 'youtube' %}
+				{% if clip.playlist %}
+				  {{ embed.youtubePlaylist(clip.playlist) }}
+				{% else %}
+				  {{ embed.youtube(clip.video) }}
+				{% endif %}
+			{% elseif clip.service == 'vimeo' %}
+			  {{ embed.vimeo(clip.video) }}
+			{% endif %}
+	  {% endfor %}
+	{% endif %}
+{% endif %}
+
