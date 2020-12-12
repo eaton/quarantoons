@@ -1,7 +1,7 @@
 backend:
   name: github
   branch: staging
-  repo: autogram-is/quarantoons
+  repo: eaton/quarantoons
   squash_merges: true
 
 site_url: "/"
