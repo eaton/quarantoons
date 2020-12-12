@@ -2,9 +2,11 @@ backend:
   name: github
   branch: main
   repo: eaton/quarantoons
+  open_authoring: true
 
 site_url: "/"
 
+publish_mode: editorial_workflow
 media_folder: 'src/uploads/' # Media files will be stored in the repo under src/uploads
 public_folder: '/uploads' # The src attribute for uploaded media will begin with /uploads
 
@@ -19,7 +21,7 @@ collections:
     description: "News and notices for the gang."
     summary: "{{title}} — {{published}}"
     format: "frontmatter"
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{week}}"
     folder: "src/posts"
     create: true
     sortable_fields: ["title", "date", "author"]
