@@ -16,7 +16,6 @@ layout: base
 				  {{ embed.youtubePlaylist(clip.playlist) | safe }}
 				{% else %}
 				  {{ embed.youtube(clip.video) | safe }}
-				  <p><a href="{{clip.raw}}">Hmmmm</a>. This might not work.</p>
 				{% endif %}
 			{% elseif clip.service == 'vimeo' %}
 			  {{ embed.vimeo(clip.video) | safe }}
